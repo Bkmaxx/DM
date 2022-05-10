@@ -3,7 +3,7 @@
 ApprioriAlgorithm
 CORELATIONMATRIX
 DataHandling
-Create DataHandling
+DataHandling
 MATRIC OPERATION
 Naive byes
 Understanding Data
