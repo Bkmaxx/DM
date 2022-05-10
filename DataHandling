@@ -1,0 +1,68 @@
+
+
+# filling missing value using fillna()
+df.fillna(0)
+# filling a missing value with previous value 
+df.fillna(method ='pad')
+#Filling null value with the next ones
+df.fillna(method ='bfill')
+# filling a null values using fillna()
+data["Gender"].fillna("No Gender", inplace = True) 
+# will replace Nan value in dataframe with value -99 
+data.replace(to_replace = np.nan, value = -99) 
+# Remove rows/ attributes
+# using dropna() function to remove rows having one Nan
+df.dropna()
+# using dropna() function to remove rows with all Nan
+df.dropna(how = 'all')
+# using dropna() function to remove column having one Nan
+df.dropna(axis = 1)
+# Replace with mean or mode
+mean_y = np.mean(ys)
+
+# Perform transformation of data using Discretization (Binning)
+import numpy as np 
+import math 
+from sklearn.datasets import load_iris 
+from sklearn import datasets, linear_model, metrics
+ 
+# load iris data set 
+dataset = load_iris() 
+a = dataset.data 
+b = np.zeros(150) 
+ 
+# take 1st column among 4 column of data set
+for i in range (150): 
+ b[i]=a[i,1] 
+ 
+b=np.sort(b) #sort the array 
+ 
+# create bins 
+bin1=np.zeros((30,5))
+bin2=np.zeros((30,5)) 
+bin3=np.zeros((30,5)) 
+ 
+# Bin mean 
+for i in range (0,150,5): 
+ k=int(i/5) 
+ mean=(b[i] + b[i+1] + b[i+2] + b[i+3] + b[i+4])/5
+ for j in range(5): 
+ bin1[k,j]=mean 
+print("Bin Mean: \n",bin1) 
+ 
+# Bin boundaries 
+for i in range (0,150,5): 
+ k=int(i/5) 
+ for j in range (5): 
+ if (b[i+j]-b[i]) < (b[i+4]-b[i+j]): 
+ bin2[k,j]=b[i] 
+ else: 
+ bin2[k,j]=b[i+4] 
+print("Bin Boundaries: \n",bin2) 
+ 
+# Bin median 
+for i in range (0,150,5): 
+ k=int(i/5) 
+ for j in range (5): 
+ bin3[k,j]=b[i+2] 
+print("Bin Median: \n",bin3)
