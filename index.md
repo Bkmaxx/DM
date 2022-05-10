@@ -4,6 +4,6 @@ ApprioriAlgorithm
 CORELATIONMATRIX
 DataHandling
 DataHandling
-MATRIC OPERATION
-Naive byes
-Understanding Data
+MATRICOPERATION
+Naivebyes
+UnderstandingData
