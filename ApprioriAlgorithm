@@ -1,0 +1,64 @@
+//Appriori Algorithm
+from apyori import apriori
+transactions = [
+ ['beer', 'nuts'],
+ ['beer', 'cheese'],
+]
+#CASE1:
+results = list(apriori(transactions))
+association_results = list(results)
+print(results[0])
+#CASE2: min support=.5,minconfidence=.8
+results = list(apriori(transactions,min_support=0.5, min_confidence=0.8))
+association_results = list(results)
+print(len(results))
+print(association_results)
+
+RelationRecord(items=frozenset({'beer'}), support=1.0, 
+ordered_statistics=[OrderedStatistic(items_base=frozenset(), items_add=frozenset({'beer'}), 
+confidence=1.0, lift=1.0)])
+
+[RelationRecord(items=frozenset({'beer'}), support=1.0, 
+ordered_statistics=[OrderedStatistic(items_base=frozenset(), items_add=frozenset({'beer'}), 
+confidence=1.0, lift=1.0)]), 
+RelationRecord(items=frozenset({'cheese', 'beer'}), support=0.5, 
+ordered_statistics=[OrderedStatistic(items_base=frozenset({'cheese'}), items_add=frozenset({'beer'}), 
+confidence=1.0, lift=1.0)]), 
+RelationRecord(items=frozenset({'nuts', 'beer'}), support=0.5, 
+ordered_statistics=[OrderedStatistic(items_base=frozenset({'nuts'}), items_add=frozenset({'beer'}), 
+confidence=1.0, lift=1.0)])]
+
+
+a) Display top 5 rows of data
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from apyori import apriori
+store_data = pd.read_csv("D:/datasets/store_data.csv")
+print(store_data.head())
+print('Structure of store data\n',str(store_data)
+
+
+#Converting data frame to list
+records = []
+for i in range(0, 7500):
+ records.append([str(store_data.values[i,j]) for j in range(0, 20)])
+#Generating association rules using apriori()
+#association_rules = apriori(records, min_support=0.0045, min_confidence=0.2, min_lift=3, min_length=2)
+association_rules = apriori(records, min_support=0.0045, min_confidence=0.2, min_lift=3, min_length=5)
+association_results = list(association_rules)
+print(len(association_results))
+print(association_results[0])
+for item in association_rules:
+ # first index of the inner list
+ # Contains base item and add item
+ pair = item[0] 
+ items = [x for x in pair]
+ print("Rule: " + items[0] + " -> " + items[1])
+ #second index of the inner list
+ print("Support: " + str(item[1]))
+ #third index of the list located at 0th
+ #of the third index of the inner list
+ print("Confidence: " + str(item[2][0][2]))
+ print("Lift: " + str(item[2][0][3]))
+ print("=====================================")
