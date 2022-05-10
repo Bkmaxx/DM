@@ -1,0 +1,31 @@
+//Understanding Data
+
+a) Loading data from CSV file 
+#loading file csv
+import pandas as pd
+pd.read_csv("FILE.CSV")
+
+b) Compute the basic statistics of given data - shape, no. of columns, mean
+#shape
+a=pd.read_csv("C:/Users/admin/Documents/diabetes.csv")
+print('shape :',a.shape)
+#no of columns
+cols=len(a.axes[1])
+print('no of columns:',cols)
+#mean of data
+m=a["Age"].mean()
+print('mean of Age:',m)
+
+c) Splitting a data frame on values of categorical variables
+#adding data
+a['address']=["hyderabad,ts","Warangal,ts","Adilabad,ts","medak,ts"]
+#splitting dataframe
+a_split=a['address'].str.split(',',1)
+a['district']=a_split.str.get(0)
+a['state']=a_split.str.get(1)
+del(a['address'])
+
+d) Visualize data using Scatter plot
+#visualize data using scatter plot
+importmatplotlib as plt
+a.plot.scatter(x='marks',y='rollno',c='Blue')
