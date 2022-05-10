@@ -1,0 +1,42 @@
+//CORELATION MATRIX
+
+import pandas as pd
+importnumpy as np
+importmatplotlib as plt
+%matplotlib inline
+#Reading the dataset in a dataframe using Pandas
+df = pd.read_csv("C:/Users/admin/Documents/diabetes.csv")
+#describe the given data
+print(df. describe())
+#Display first 10 rows of data
+print(df.head(10))
+# identify missing items
+print(df.isnull())
+#Z-score function defined in scipy library to detect the outliers
+importnumpy as np
+defoutliers_z_score(ys):
+threshold = 3
+mean_y = np.mean(ys)
+stdev_y = np.std(ys)
+z_scores = [(y - mean_y) / stdev_y for y in ys]
+returnnp.where(np.abs(z_scores) > threshold)
+
+
+b) Find correlation among all attributes
+# importing pandas as pd
+import pandas as pd
+# Making data frame from the csv file 
+df = pd.read_csv("nba.csv") 
+# Printing the first 10 rows of the data frame for visualization 
+df[:10]
+# To find the correlation among columns
+# using pearson method 
+df.corr(method ='pearson')
+# using „kendall‟ method.
+df.corr(method ='kendall')
+c) Visualize correlation matrix
+INPUT/OUTPUT:
+import pandas as pd
+df = pd.read_csv("C:/Users/admin/Documents/diabetes.csv")
+print(df. describe())
+print(df.head(10))
